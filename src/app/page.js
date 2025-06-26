@@ -6,14 +6,23 @@ import Scroll from "./components/ScrollTrigger";
 import SlideInSection from "./components/SlideInSection";
 import PinnedSection from "./components/PinnedSection";
 import TimelineScroll from "./components/TimelineScroll";
+import StaggerList from "./components/StaggerList";
+import SplitTextReveal from "./components/SplitText/SplitTextReveal";
+import SplitTextWordsChars from "./components/SplitText/SplitTextWordsChars";
+import ParallaxSection from "./components/parallax/ParallaxSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
-      <Basic />
+      <Link href="/about">
+        <button className="border rounded-md px-4 py-2 m-4 cursor-pointer">
+          about
+        </button>
+      </Link>
+      {/* <Basic />
       <TickerBox />
       <GsapFromToExample />
-      {/* <div className="h-[1200px]"></div> */}
 
       <Scroll />
 
@@ -48,6 +57,12 @@ export default function Home() {
       </div>
 
       <TimelineScroll />
+      <StaggerList /> */}
+
+      {/* <SplitTextReveal />
+      <SplitTextWordsChars /> */}
+      <ParallaxSection />
+      <div className="h-[2100px]"></div>
     </div>
   );
 }
