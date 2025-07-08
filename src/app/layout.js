@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import RootProviders from "./RootProviders";
+import ScrollProgress from "./components/ScrollProgress";
+// import ScrollProgress from "./components/ScrollProgress";
+// import ScrollProgress from "./components/ScrollProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +26,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <RootProviders>{children}</RootProviders>
+        <RootProviders>
+          <ScrollProgress />
+          {children}
+        </RootProviders>
       </body>
     </html>
   );
