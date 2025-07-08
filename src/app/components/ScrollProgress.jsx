@@ -2,14 +2,15 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ScrollProgress = () => {
-  useEffect(() => {
+  useGSAP(() => {
     gsap.to("#progress-bar", {
       width: "100%",
-      ease: "none",
+      ease: "power2.inOut",
       scrollTrigger: {
         trigger: "body",
         start: "top top",

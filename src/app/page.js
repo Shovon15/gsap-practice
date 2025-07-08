@@ -19,10 +19,10 @@ export default function Home() {
         <button className="border rounded-md px-4 py-2 m-4 cursor-pointer">
           about
         </button>
-        <p className="text-center text-[clamp(25px,6vw,100px)]">
-          lorem imsum loler discover
-        </p>
       </Link>
+      <p className="text-center text-[clamp(25px,6vw,100px)]">
+        lorem imsum loler discover
+      </p>
       {/* <Basic />
       <TickerBox />
       <GsapFromToExample />
