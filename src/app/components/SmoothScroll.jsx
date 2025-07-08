@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollSmoother);
 
@@ -9,7 +10,7 @@ const SmoothScroll = ({ children }) => {
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     // Prevent double init
     if (ScrollSmoother.get()) return;
 
@@ -29,8 +30,10 @@ const SmoothScroll = ({ children }) => {
   // }, []);
 
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">{children}</div>
+    <div id="smooth-wrapper" ref={wrapperRef}>
+      <div id="smooth-content" ref={contentRef}>
+        {children}
+      </div>
     </div>
   );
 };

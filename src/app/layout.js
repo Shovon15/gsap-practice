@@ -26,10 +26,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <RootProviders>
-          <ScrollProgress />
-          {children}
-        </RootProviders>
+        <RootProviders>{children}</RootProviders>
+        <ScrollProgress />
       </body>
     </html>
   );
