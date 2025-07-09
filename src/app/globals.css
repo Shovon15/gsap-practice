@@ -33,3 +33,49 @@ body {
 #smooth-content {
   will-change: transform;
 }
+
+/* Custom Product Card Styles */
+.product-card {
+  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl;
+  max-width: 350px;
+  min-width: 350px;
+  margin: 0 auto;
+}
+
+.image-container {
+  @apply relative overflow-hidden;
+  height: 250px;
+}
+
+.product-image {
+  @apply w-full h-full object-cover transition-transform duration-500;
+}
+
+.hover-overlay {
+  @apply absolute inset-0 border-2 border-white opacity-0 pointer-events-none;
+  width: 1rem;
+  height: 1rem;
+  /* margin: auto;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg);
+  transform-origin: center; */
+}
+
+.product-card:hover .hover-overlay {
+  @apply opacity-100;
+  width: 5rem;
+  height: 5rem;
+  transform: rotate(-45deg);
+}
+
+.card-content {
+  @apply p-6;
+}
+
+.product-heading {
+  @apply text-xl font-bold text-gray-800 mb-2;
+}
+
+.product-price {
+  @apply text-2xl font-semibold text-blue-600;
+}
