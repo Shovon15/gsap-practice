@@ -40,7 +40,10 @@ export default function Home() {
           about
         </button>
       </Link>
-      <p className="text-center text-[clamp(25px,6vw,100px)]">
+      {/* <p className="text-center text-[clamp(30px,3.125vw,60px)]">
+        lorem imsum loler discover
+      </p> */}
+      <p className="text-center text-[calc(30/375*100vw)] md:text-[calc(40/768*100vw)] lg:text-[calc(60/1920*100vw)] border py-[2vw] px-[30vw]">
         lorem imsum loler discover
       </p>
       {/* <Basic />
@@ -87,7 +90,7 @@ export default function Home() {
       {/* <ParallaxSection />
       <div className="h-[2100px]"></div> */}
 
-      <div className="max-w-6xl mx-auto">
+      {/* <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">
           Product Collection
         </h1>
@@ -105,7 +108,7 @@ export default function Home() {
 
       <div className="h-[500px] w-full border border-blue-500 relative overflow-hidden">
         <div className="bg-green-500 size-20 absolute inset-0 m-auto"></div>
-      </div>
+      </div> */}
     </div>
   );
 }

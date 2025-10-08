@@ -1,0 +1,87 @@
+/* globals.css (or component module) */
+
+/* variables so it's easy to change border color/width */
+:root {
+  --card-border-color: #ef4444; /* red-500 */
+  --card-border-width: 4px;
+}
+
+/* Base: each card has full border (we'll selectively remove sides) */
+.shared-border-grid > .card {
+  border-style: solid;
+  border-color: var(--card-border-color);
+  /* set default width to 0 so we explicitly enable needed sides per breakpoint */
+  border-width: 0;
+  /* keep rounded corners visually if you want: */
+  border-radius: 0; /* remove if you want sharp joined border */
+  box-sizing: border-box;
+}
+
+/* MOBILE (single column): show full left/right borders always,
+   but collapse top border for stacked cards to keep single shared border between vertical neighbors */
+@media (max-width: 1023px) {
+  .shared-border-grid > .card {
+    border-left-width: var(--card-border-width);
+    border-right-width: var(--card-border-width);
+    border-top-width: var(--card-border-width);
+    border-bottom-width: var(--card-border-width);
+  }
+
+  /* any card after the first — remove top border so adjacent stacked cards share one border */
+  .shared-border-grid > .card + .card {
+    border-top-width: 0;
+  }
+
+  /* Optional: add slight rounding on top/bottom of group */
+  .shared-border-grid > .card:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .shared-border-grid > .card:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+
+/* DESKTOP (3 columns): handle 3-column layout so horizontal neighbors share a single border */
+@media (min-width: 1024px) {
+  /* set baseline: top and bottom borders exist for all cards */
+  .shared-border-grid > .card {
+    border-top-width: var(--card-border-width);
+    border-bottom-width: var(--card-border-width);
+  }
+
+  /* First column (1st, 4th, 7th, ...) -> show left border, hide right border
+     so the center card will be the one that shows the vertical border between col1 and col2 */
+  .shared-border-grid > .card:nth-child(3n + 1) {
+    border-left-width: var(--card-border-width);
+    border-right-width: 0;
+  }
+
+  /* Middle column (2nd, 5th, 8th, ...) -> hide left and right border so it visually gets the single border from the neighbor */
+  .shared-border-grid > .card:nth-child(3n + 2) {
+    border-left-width: 0;
+    border-right-width: 0;
+  }
+
+  /* Last column (3rd, 6th, 9th, ...) -> hide left, show right border */
+  .shared-border-grid > .card:nth-child(3n) {
+    border-left-width: 0;
+    border-right-width: var(--card-border-width);
+  }
+
+  /* Vertical collapse between rows: for rows after first, remove top border to avoid double */
+  /* cards that are in row 2 and below are nth-child( n+4 ) for 3-column layout */
+  .shared-border-grid > .card:nth-child(n + 4) {
+    border-top-width: 0;
+  }
+
+  /* Optional rounding on outer edges for visual polish */
+  .shared-border-grid > .card:nth-child(1) {
+    border-top-left-radius: 6px;
+  }
+  .shared-border-grid > .card:nth-child(3) {
+    border-top-right-radius: 6px;
+  }
+  /* bottom corners (if number of cards known/dynamic you can adjust or skip) */
+}
