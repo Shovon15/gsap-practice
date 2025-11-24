@@ -46,6 +46,8 @@ export default function Home() {
       <p className="text-center text-[calc(30/375*100vw)] md:text-[calc(40/768*100vw)] lg:text-[calc(60/1920*100vw)] border py-[2vw] px-[30vw]">
         lorem imsum loler discover
       </p>
+
+      <div className="bg-green-200 h-[4400px]"></div>
       {/* <Basic />
       <TickerBox />
       <GsapFromToExample />
