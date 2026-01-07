@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import CopyWrapper from "./CopyWrapper";
+import CustomCalculator from "./CustomCalculator";
 
 // type ClampResult = {
 //   a: number; // vw coefficient
@@ -39,8 +40,8 @@ function makeClamp(
 
 const Calculator = () => {
   const [devices, setDevices] = useState([
-    { width: "375", font: "40.88" },
-    { width: "1024", font: "57.31" }, // optional middle point
+    { width: "430", font: "40.88" },
+    { width: "1152", font: "57.31" }, // optional middle point
     { width: "1920", font: "80" },
   ]);
 
@@ -99,59 +100,70 @@ const Calculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 space-y-4">
-      <h1 className="text-xl font-semibold">Clamp ClassName Calculator</h1>
+    <div>
+      <div className="max-w-2xl mx-auto p-4 space-y-4">
+        <h1 className="text-xl font-semibold">Clamp ClassName Calculator</h1>
 
-      <p className="text-sm text-gray-400">
-        Fill at least <strong>2</strong> device widths and font sizes (e.g. 375
-        → 40.88, 1920 → 80). The 3rd is optional.
-      </p>
+        <p className="text-sm text-gray-400">
+          Fill at least <strong>2</strong> device widths and font sizes (e.g.
+          375 → 40.88, 1920 → 80). The 3rd is optional.
+        </p>
 
-      <div className="space-y-3">
-        {devices.map((device, index) => (
-          <div key={index} className="flex gap-2 items-center">
-            <span className="w-14 text-sm text-gray-300">
-              {index === 0 ? "Device 1" : index === 1 ? "Device 2" : "Device 3"}
-            </span>
-            <input
-              type="number"
-              placeholder="Width (px)"
-              className="flex-1 rounded border border-gray-600 bg-black/40 px-2 py-1 text-sm"
-              value={device.width}
-              onChange={(e) => handleChange(index, "width", e.target.value)}
-            />
-            <input
-              type="number"
-              step="0.01"
-              placeholder="Font (px)"
-              className="flex-1 rounded border border-gray-600 bg-black/40 px-2 py-1 text-sm"
-              value={device.font}
-              onChange={(e) => handleChange(index, "font", e.target.value)}
-            />
+        <div className="space-y-3">
+          {devices.map((device, index) => (
+            <div key={index} className="flex gap-2 items-center">
+              <span className="w-14 text-sm text-gray-300">
+                {index === 0
+                  ? "Device 1"
+                  : index === 1
+                  ? "Device 2"
+                  : "Device 3"}
+              </span>
+              <input
+                type="number"
+                placeholder="Width (px)"
+                className="flex-1 rounded border border-gray-600 bg-black/40 px-2 py-1 text-sm"
+                value={device.width}
+                onChange={(e) => handleChange(index, "width", e.target.value)}
+              />
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Font (px)"
+                className="flex-1 rounded border border-gray-600 bg-black/40 px-2 py-1 text-sm"
+                value={device.font}
+                onChange={(e) => handleChange(index, "font", e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleCalculate}
+          className="rounded bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 cursor-pointer"
+        >
+          Generate className
+        </button>
+
+        {error && <p className="text-sm text-red-400">{error}</p>}
+
+        {classNameResult && (
+          <div className="mt-3">
+            <p className="text-sm text-gray-300 mb-1">Tailwind className:</p>
+            <CopyWrapper text={classNameResult}>
+              <code className="block rounded bg-black/60 p-2 text-xl text-green-300 break-all">
+                {classNameResult}
+              </code>
+            </CopyWrapper>
           </div>
-        ))}
+        )}
       </div>
 
-      <button
-        type="button"
-        onClick={handleCalculate}
-        className="rounded bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 cursor-pointer"
-      >
-        Generate className
-      </button>
-
-      {error && <p className="text-sm text-red-400">{error}</p>}
-
-      {classNameResult && (
-        <div className="mt-3">
-          <p className="text-sm text-gray-300 mb-1">Tailwind className:</p>
-          <CopyWrapper text={classNameResult}>
-            <code className="block rounded bg-black/60 p-2 text-xl text-green-300 break-all">
-              {classNameResult}
-            </code>
-          </CopyWrapper>
-        </div>
-      )}
+      <div className="pt-10">
+        <h1 className="text-center text-4xl font-bold"> Custom Calculator</h1>
+        <CustomCalculator />
+      </div>
     </div>
   );
 };
