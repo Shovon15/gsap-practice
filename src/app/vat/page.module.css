@@ -1,0 +1,136 @@
+.stepCard {
+  display: flex;
+  min-height: 210px;
+  width: 100%;
+  cursor: not-allowed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d6e3df;
+  border-radius: 12px;
+  background: #fff;
+  padding: 28px 16px 20px;
+  color: #1673b7;
+  box-shadow: 0 4px 14px rgb(0 44 54 / 9%);
+  transition: transform 200ms ease, border-color 200ms ease, background 300ms ease,
+    color 300ms ease, box-shadow 200ms ease;
+}
+
+.current {
+  cursor: pointer;
+  border-color: #10b981;
+  box-shadow: 0 8px 24px rgb(16 185 129 / 18%);
+}
+
+.current:hover {
+  transform: translateY(-4px);
+}
+
+.completed {
+  cursor: default;
+  border-color: #059669;
+  background: #10b981;
+  color: #fff;
+}
+
+.stepNumber {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1673b7;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.completed .stepNumber {
+  border: 2px solid #fff;
+  background: transparent;
+}
+
+.iconCircle {
+  display: flex;
+  width: 72px;
+  height: 72px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #eaf3fb;
+}
+
+.completed .iconCircle {
+  border: 2px solid #fff;
+  background: transparent;
+}
+
+.completedTick {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: draw-tick 450ms ease-out forwards;
+}
+
+.stepTitle {
+  margin-top: 14px;
+  color: #003c5a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.completed .stepTitle {
+  color: #fff;
+}
+
+.stepStatus {
+  margin-top: 5px;
+  color: #718096;
+  font-size: 12px;
+}
+
+.completed .stepStatus {
+  color: rgb(255 255 255 / 85%);
+}
+
+.nextArrow {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  transform: translateX(-50%);
+  flex-direction: column;
+  align-items: center;
+  color: #059669;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: point-next 800ms ease-in-out infinite alternate;
+}
+
+@keyframes point-next {
+  from {
+    transform: translate(-50%, -5px);
+  }
+  to {
+    transform: translate(-50%, 4px);
+  }
+}
+
+@keyframes draw-tick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nextArrow,
+  .completedTick {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}

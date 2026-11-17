@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
+import { VideoPlayer } from "./VideoPlayer";
+// import VideoPlayer from "./VideoPlayer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,6 +38,11 @@ export default function AboutPage() {
           Home
         </button>
       </Link>
+
+      <VideoPlayer
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        title="Big Buck Bunny"
+      />
     </div>
   );
 }
